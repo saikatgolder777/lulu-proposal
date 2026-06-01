@@ -1,87 +1,340 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Lulu ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goluuu ❤️ Lulu</title>
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
 height:100vh;
+background:url('IMG_3721.HEIC') center center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:20px;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:25px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+font-size:20px;
+cursor:pointer;
+}
+
+.gallery{
+height:100vh;
+position:relative;
+overflow:hidden;
+background:#050505;
+}
+
+.photo{
+position:absolute;
+width:220px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.25);
+animation:float 8s infinite ease-in-out;
+}
+
+.photo:nth-child(1){
+left:5%;
+top:10%;
+}
+
+.photo:nth-child(2){
+right:5%;
+top:15%;
+}
+
+.photo:nth-child(3){
+left:15%;
+bottom:10%;
+}
+
+.photo:nth-child(4){
+right:15%;
+bottom:10%;
+}
+
+.photo:nth-child(5){
+left:40%;
+top:35%;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-30px);}
+100%{transform:translateY(0px);}
+}
+
+.letter{
+padding:120px 25px;
+text-align:center;
+max-width:900px;
+margin:auto;
+line-height:2;
+font-size:22px;
+}
+
+.letter h2{
+margin-bottom:30px;
+font-size:45px;
+}
+
+.proposal{
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:#ffb6c1;
-font-family:Arial;
+padding:20px;
 text-align:center;
 }
 
-h1{
-color:white;
-font-size:40px;
+.proposal h1{
+font-size:50px;
+margin-bottom:30px;
 }
 
-button{
-padding:15px 30px;
-margin:10px;
-font-size:20px;
-cursor:pointer;
+.yes{
+padding:15px 35px;
+font-size:22px;
 border:none;
-border-radius:10px;
+border-radius:40px;
+cursor:pointer;
+margin-right:20px;
 }
 
-#photo{
-display:none;
-width:300px;
-border-radius:20px;
-margin-top:20px;
+.no{
+padding:15px 35px;
+font-size:22px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+position:absolute;
 }
+
+.buttons{
+position:relative;
+height:250px;
+width:100%;
+}
+
+.result{
+display:none;
+min-height:100vh;
+text-align:center;
+padding-top:80px;
+}
+
+.result img{
+width:350px;
+max-width:90%;
+border-radius:20px;
+margin:20px;
+box-shadow:0 0 25px rgba(255,255,255,.3);
+}
+
+.result h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.result p{
+font-size:24px;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Lulu, Will You Be Mine Forever? ❤️</h1>
+<section class="hero">
 
-<button onclick="yes()">YES ❤️</button>
+<div class="hero-content">
 
-<button id="no" onmouseover="moveNo()">
-NO 😢
+<h1>Goluuu ❤️ Lulu</h1>
+
+<p>A little story about us...</p>
+
+<button class="btn"
+onclick="document.getElementById('gallery').scrollIntoView()">
+Begin The Journey ❤️
 </button>
 
-<img id="photo"
-src="IMG_3717.HEIC">
+</div>
+
+</section>
+
+<section class="gallery" id="gallery">
+
+<img src="IMG_3717.HEIC" class="photo">
+<img src="IMG_3718.HEIC" class="photo">
+<img src="IMG_3721.HEIC" class="photo">
+<img src="f6e4fe53-d04b-44d5-b4fc-b548bef07385.JPG" class="photo">
+<img src="be6c013c-857d-4f44-bb5d-f23e32a76116.JPG" class="photo">
+
+</section>
+
+<section class="letter">
+
+<h2>Dear Lulu ❤️</h2>
+
+<p>
+
+Before you, days were just days.
+
+Then you arrived and turned ordinary moments into unforgettable memories.
+
+Every smile, every late-night conversation,
+every laugh and every little fight became part of my favorite story.
+
+If life gave me another chance...
+
+I would still choose you.
+
+Again.
+
+And Again.
+
+Forever.
+
+❤️
+
+</p>
+
+</section>
+
+<section class="proposal">
+
+<h1>Will You Stay With Me Forever? ❤️</h1>
+
+<div class="buttons">
+
+<button class="yes" onclick="showLove()">
+YES ❤️
+</button>
+
+<button class="no" id="noBtn" onmouseover="moveNo()">
+NO 💔
+</button>
+
+</div>
+
+</section>
+
+<section class="result" id="result">
+
+<h1>She Said YES ❤️</h1>
+
+<img src="IMG_3721.HEIC">
+
+<p>
+The Happiest Day Of Goluuu's Life ❤️
+</p>
+
+</section>
 
 <script>
 
-function yes(){
-
-document.body.innerHTML=
-`
-<h1>Yayyyyy ❤️❤️❤️</h1>
-<h2>You made me the happiest person alive!</h2>
-
-<img src="IMG_3717.HEIC"
-style="width:350px;border-radius:20px;">
-`;
-
-}
-
 function moveNo(){
 
-alert("Error 404: Lulu cannot say No ❤️");
+alert("⚠️ Warning! This option is unavailable for Lulu ❤️");
 
-let btn=document.getElementById("no");
+let btn=document.getElementById("noBtn");
 
-btn.style.position="absolute";
-
-btn.style.left=
-Math.random()*80+"%";
-
-btn.style.top=
-Math.random()*80+"%";
+btn.style.left=Math.random()*70+"%";
+btn.style.top=Math.random()*180+"px";
 
 }
+
+function showLove(){
+
+let result=document.getElementById("result");
+
+result.style.display="block";
+
+result.scrollIntoView({
+behavior:"smooth"
+});
+
+for(let i=0;i<100;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.animationDuration=
+(Math.random()*3+3)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+}
+
 </script>
 
 </body>
