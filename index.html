@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lulu ❤️</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#ffb6c1;
+font-family:Arial;
+text-align:center;
+}
+
+h1{
+color:white;
+font-size:40px;
+}
+
+button{
+padding:15px 30px;
+margin:10px;
+font-size:20px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+#photo{
+display:none;
+width:300px;
+border-radius:20px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Lulu, Will You Be Mine Forever? ❤️</h1>
+
+<button onclick="yes()">YES ❤️</button>
+
+<button id="no" onmouseover="moveNo()">
+NO 😢
+</button>
+
+<img id="photo"
+src="YOUR_PHOTO_LINK_HERE">
+
+<script>
+
+function yes(){
+
+document.body.innerHTML=
+`
+<h1>Yayyyyy ❤️❤️❤️</h1>
+<h2>You made me the happiest person alive!</h2>
+
+<img src="YOUR_PHOTO_LINK_HERE"
+style="width:350px;border-radius:20px;">
+`;
+
+}
+
+function moveNo(){
+
+alert("Error 404: Lulu cannot say No ❤️");
+
+let btn=document.getElementById("no");
+
+btn.style.position="absolute";
+
+btn.style.left=
+Math.random()*80+"%";
+
+btn.style.top=
+Math.random()*80+"%";
+
+}
+</script>
+
+</body>
+</html>
