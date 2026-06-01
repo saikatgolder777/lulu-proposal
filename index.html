@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Goluuu ❤️ Lulu</title>
 
 <style>
@@ -11,7 +13,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 html{
@@ -19,7 +21,7 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#000;
+background:black;
 color:white;
 overflow-x:hidden;
 }
@@ -35,7 +37,7 @@ position:relative;
 }
 
 .hero::before{
-content:"";
+content:'';
 position:absolute;
 inset:0;
 background:rgba(0,0,0,.65);
@@ -49,163 +51,67 @@ padding:20px;
 
 .hero h1{
 font-size:60px;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 .hero p{
 font-size:22px;
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
 .btn{
 padding:15px 35px;
+font-size:20px;
 border:none;
 border-radius:40px;
-font-size:20px;
 cursor:pointer;
 }
 
-.gallery{
+.slideshow{
 height:100vh;
 position:relative;
 overflow:hidden;
-background:#050505;
+background:black;
 }
 
-.photo{
+.slide{
 position:absolute;
-width:220px;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,.25);
-animation:float 8s infinite ease-in-out;
-}
-
-.photo:nth-child(1){
-left:5%;
-top:10%;
-}
-
-.photo:nth-child(2){
-right:5%;
-top:15%;
-}
-
-.photo:nth-child(3){
-left:15%;
-bottom:10%;
-}
-
-.photo:nth-child(4){
-right:15%;
-bottom:10%;
-}
-
-.photo:nth-child(5){
-left:40%;
-top:35%;
-}
-
-@keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-30px);}
-100%{transform:translateY(0px);}
-}
-
-.letter{
-padding:120px 25px;
-text-align:center;
-max-width:900px;
-margin:auto;
-line-height:2;
-font-size:22px;
-}
-
-.letter h2{
-margin-bottom:30px;
-font-size:45px;
-}
-
-.proposal{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-padding:20px;
-text-align:center;
-}
-
-.proposal h1{
-font-size:50px;
-margin-bottom:30px;
-}
-
-.yes{
-padding:15px 35px;
-font-size:22px;
-border:none;
-border-radius:40px;
-cursor:pointer;
-margin-right:20px;
-}
-
-.no{
-padding:15px 35px;
-font-size:22px;
-border:none;
-border-radius:40px;
-cursor:pointer;
-position:absolute;
-}
-
-.buttons{
-position:relative;
-height:250px;
 width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 2s ease;
 }
 
-.result{
-display:none;
-min-height:100vh;
+.slide.active{
+opacity:1;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.35);
+z-index:2;
+}
+
+.slide-text{
+position:absolute;
+bottom:50px;
+width:100%;
 text-align:center;
-padding-top:80px;
-}
-
-.result img{
-width:350px;
-max-width:90%;
-border-radius:20px;
-margin:20px;
-box-shadow:0 0 25px rgba(255,255,255,.3);
-}
-
-.result h1{
-font-size:60px;
-margin-bottom:20px;
-}
-
-.result p{
-font-size:24px;
-}
-
-.heart{
-position:fixed;
-top:-20px;
-font-size:25px;
-animation:fall linear forwards;
-pointer-events:none;
-}
-
-@keyframes fall{
-to{
-transform:translateY(110vh);
-}
+z-index:3;
+font-size:28px;
 }
 
 </style>
+
 </head>
 
 <body>
+
+<audio id="bgMusic" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <section class="hero">
 
@@ -215,24 +121,46 @@ transform:translateY(110vh);
 
 <p>A little story about us...</p>
 
-<button class="btn"
-onclick="document.getElementById('gallery').scrollIntoView()">
-Begin The Journey ❤️
+<button class="btn" onclick="startJourney()">
+Begin Our Journey ❤️
 </button>
 
 </div>
 
 </section>
+<section class="slideshow" id="slideshow">
 
-<section class="gallery" id="gallery">
+<div class="overlay"></div>
 
-<img src="IMG_3717.HEIC" class="photo">
-<img src="IMG_3718.HEIC" class="photo">
-<img src="IMG_3721.HEIC" class="photo">
-<img src="f6e4fe53-d04b-44d5-b4fc-b548bef07385.JPG" class="photo">
-<img src="be6c013c-857d-4f44-bb5d-f23e32a76116.JPG" class="photo">
+<img src="IMG_3721.HEIC" class="slide active">
+<img src="IMG_3717.HEIC" class="slide">
+<img src="IMG_3718.HEIC" class="slide">
+<img src="f6e4fe53-d04b-44d5-b4fc-b548bef07385.JPG" class="slide">
+<img src="be6c013c-857d-4f44-bb5d-f23e32a76116.JPG" class="slide">
+
+<div class="slide-text">
+Every Memory With You Is My Favorite ❤️
+</div>
 
 </section>
+
+<style>
+
+.letter{
+padding:100px 25px;
+max-width:900px;
+margin:auto;
+line-height:2;
+font-size:22px;
+text-align:center;
+}
+
+.letter h2{
+font-size:50px;
+margin-bottom:30px;
+}
+
+</style>
 
 <section class="letter">
 
@@ -244,8 +172,15 @@ Before you, days were just days.
 
 Then you arrived and turned ordinary moments into unforgettable memories.
 
-Every smile, every late-night conversation,
-every laugh and every little fight became part of my favorite story.
+Every smile.
+
+Every call.
+
+Every laugh.
+
+Every little fight.
+
+Everything became special because it was with you.
 
 If life gave me another chance...
 
@@ -262,10 +197,13 @@ Forever.
 </p>
 
 </section>
-
 <section class="proposal">
 
-<h1>Will You Stay With Me Forever? ❤️</h1>
+<h1>
+Lulu...
+<br><br>
+Will You Stay With Me Forever? ❤️
+</h1>
 
 <div class="buttons">
 
@@ -285,7 +223,7 @@ NO 💔
 
 <h1>She Said YES ❤️</h1>
 
-<img src="IMG_3721.HEIC">
+<img src="IMG_3721.HEIC" width="350">
 
 <p>
 The Happiest Day Of Goluuu's Life ❤️
@@ -293,26 +231,108 @@ The Happiest Day Of Goluuu's Life ❤️
 
 </section>
 
+<style>
+
+.proposal{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.proposal h1{
+font-size:50px;
+}
+
+.buttons{
+position:relative;
+height:250px;
+width:100%;
+}
+
+.yes,.no{
+padding:15px 35px;
+font-size:22px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+}
+
+.no{
+position:absolute;
+margin-left:20px;
+}
+
+.result{
+display:none;
+min-height:100vh;
+text-align:center;
+padding-top:100px;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+</style>
+
 <script>
+
+function startJourney(){
+
+document.getElementById("bgMusic").play();
+
+document.getElementById("slideshow")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+let slides=document.querySelectorAll(".slide");
+
+let current=0;
+
+setInterval(()=>{
+
+slides[current].classList.remove("active");
+
+current=(current+1)%slides.length;
+
+slides[current].classList.add("active");
+
+},3000);
 
 function moveNo(){
 
-alert("⚠️ Warning! This option is unavailable for Lulu ❤️");
+alert("⚠️ Error! Lulu cannot select NO ❤️");
 
 let btn=document.getElementById("noBtn");
 
 btn.style.left=Math.random()*70+"%";
-btn.style.top=Math.random()*180+"px";
+
+btn.style.top=Math.random()*150+"px";
 
 }
 
 function showLove(){
 
-let result=document.getElementById("result");
+document.getElementById("result").style.display="block";
 
-result.style.display="block";
-
-result.scrollIntoView({
+document.getElementById("result")
+.scrollIntoView({
 behavior:"smooth"
 });
 
